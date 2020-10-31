@@ -1,7 +1,6 @@
 import React from 'react'
 
 function AdvancedList(props) {
-    console.log(props);
     const advancedList = props.advancedList;
     return(
         advancedList.map(item  => (
@@ -17,5 +16,3 @@ function AdvancedList(props) {
     )
 }
 export default AdvancedList;
-
-

@@ -24,7 +24,8 @@ class List extends React.Component {
             name: e.target.value,
         })
     }
-    handleAddItemToTheList() {/*функція яка при кліці на кнопку ДОДАТИ, додає нове завдання (яке сидить вже в стейті) до нашого списку завдань у стейті*/
+    handleAddItemToTheList(e) {/*функція яка при кліці на кнопку ДОДАТИ, додає нове завдання (яке сидить вже в стейті) до нашого списку завдань у стейті*/
+        e.preventDefault();
         this.setState(
             state => { 
                 const list = [...this.state.list, state.name]
@@ -35,7 +36,8 @@ class List extends React.Component {
             }
         )
     }
-    handleResetList() {/*функція яка очищає ліст з справами*/
+    handleResetList(e) {/*функція яка очищає ліст з справами*/
+        e.preventDefault();
         this.setState({
             list: []
         })
@@ -74,17 +76,20 @@ class List extends React.Component {
     render() {
         return(
             <div className='list'>
+                
+                <form>
+                    <input 
+                        type='text'
+                        onChange={this.handleChange}
+                        value={this.state.name}
+                    />
 
-                <input 
-                    type='text'
-                    onChange={this.handleChange}
-                    value={this.state.name}
-                />
+                    <div><em>{this.state.name}</em></div>
 
-                <div><em>{this.state.name}</em></div>
-
-                <button onClick={this.handleAddItemToTheList}>Додати</button>
-                <button onClick={this.handleResetList}>Очистити list</button>
+                    <button onClick={this.handleAddItemToTheList}>Додати</button>
+                    <button onClick={this.handleResetList}>Очистити list</button>
+                </form>
+                
 
                 {/* {this.state.flag &&      
                     <div>
